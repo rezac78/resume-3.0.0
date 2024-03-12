@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "Translator Extension",
+  "version": "1.0",
+  "description": "Translate English to Farsi instantly.",
+  "icons": {
+    "48": "icon.png"
+  },
+  "permissions": ["activeTab"],
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_icon": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"]
+    }
+  ]
+}
