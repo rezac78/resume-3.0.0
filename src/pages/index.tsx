@@ -6,13 +6,13 @@ import { useState } from "react";
 export default function Home() {
         const [activeSection, setActiveSection] = useState('translate');
         return (
-                <main className="bg-gray-400 w-full h-screen p-8 flex m-auto">
-                        <div className="flex justify-center w-full">
-                                <div className="w-7/12 flex flex-col">
-                                        {activeSection === 'translate' && <Translate />}
-                                        {activeSection === 'write' && <Write />}
-                                </div>
-                                <div className="w-1/12">
+                <main className="bg-gray-400 w-full h-screen px-8 flex justify-center items-start">
+                        <div className="mx-auto rounded-lg shadow-lg overflow-hidden my-10 flex">
+                                <div className="flex w-full bg-white">
+                                        <div className="flex flex-col w-10/12">
+                                                {activeSection === 'translate' && <Translate />}
+                                                {activeSection === 'write' && <Write />}
+                                        </div>
                                         <Navigation setActiveSection={setActiveSection} />
                                 </div>
                         </div>

@@ -32,6 +32,6 @@ export const WriteFormat: NavbarTransition[] = [
 ];
 export const Languages: NavbarTransition[] = [
   { id: 1, name: "English", TagName: "en" },
-  { id: 2, name: "Farsi", TagName: "fa" },
+  { id: 2, name: "Persian", TagName: "fa" },
   { id: 3, name: "Spanish", TagName: "sp" },
 ];

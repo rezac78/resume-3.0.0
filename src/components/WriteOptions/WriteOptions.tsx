@@ -1,16 +1,24 @@
 import { useState } from "react";
 import { WriteLength, WriteFormat } from "../../Event/Event"
 import Selectors from "../Shared/Selectors/Selectors";
+import { WriteText } from "@/services/Service";
 interface WriteOptions {
+        text: string;
+        setPreview: (value: string) => void;
 }
 export default function WriteOptions(props: WriteOptions) {
         const [active, setActive] = useState('Auto');
         const [activeFormat, setActiveFormat] = useState('Auto');
+        const [SelectLan, setSelectLan] = useState('English');
         const handleClickLength = (section: string) => {
                 setActive(section);
         };
         const handleClickFormat = (section: string) => {
                 setActiveFormat(section);
+        };
+        const handleSendForm = async () => {
+                const response = await WriteText(props.text, active, activeFormat, SelectLan);
+                props.setPreview(response?.message.content)
         };
         return (
                 <>
@@ -36,7 +44,13 @@ export default function WriteOptions(props: WriteOptions) {
                                         </button>
                                 ))}
                         </div>
-                        <Selectors/>
+                        <Selectors setSelectLan={setSelectLan} />
+                        <div className="flex justify-center mt-4">
+                                <button onClick={() => handleSendForm()} disabled={!props.text.trim()} className={`p-3 w-9/12 rounded-full transition ${props.text.trim() ? 'bg-violet-500 hover:bg-violet-600' : 'bg-violet-300'
+                                        } text-white`}>
+                                        Regenerate Crtl
+                                </button>
+                        </div>
                 </>
         );
 }

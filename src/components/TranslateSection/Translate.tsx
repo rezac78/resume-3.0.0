@@ -2,16 +2,21 @@ import { SpeakerWaveIcon, DocumentDuplicateIcon, ChevronUpDownIcon, BookmarkIcon
 import NavTranslate from "../NavTranslate/NavTranslate";
 import InputSection from "../Shared/InputSection/InputSection";
 import { useState } from "react";
+import { translateText } from "@/services/Service";
 
 export default function Translate() {
         const [text, setText] = useState('');
-
-        const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        const [textTranslate, setTextTranslate] = useState('');
+        const handleChange = async (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+                const inputText = e.target.value;
                 setText(e.target.value);
+                const response = await translateText(inputText);
+                setTextTranslate(response?.message.content);
         };
 
         const clearText = () => {
                 setText('');
+                setTextTranslate('');
         };
         return (
                 <div className="bg-white rounded-lg shadow-lg overflow-hidden mt-10">
@@ -51,7 +56,7 @@ export default function Translate() {
                                                 <NavTranslate Type="translated" />
                                         </div>
                                         <div className="relative mb-4">
-                                                <InputSection className="w-full p-4 h-40 text-sm text-black border-2 border-purple-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Translation" />
+                                                <InputSection value={textTranslate} className="w-full p-4 h-40 text-sm text-black border-2 border-purple-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Translation" />
                                                 <div className="flex absolute inset-y-5 left-2 items-end pl-3">
                                                         <button type="button" className="text-gray-400">
                                                                 <SpeakerWaveIcon className={`h-3 w-3`} />

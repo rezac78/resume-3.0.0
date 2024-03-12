@@ -1,6 +1,14 @@
+import { useState } from "react";
 import InputSection from "../Shared/InputSection/InputSection";
 import WriteOptions from "../WriteOptions/WriteOptions";
 export default function Write() {
+        const [text, setText] = useState('');
+        const [preview, setPreview] = useState('');
+        const handleChange = async (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+                const inputText = e.target.value;
+                setText(inputText);
+        };
+        console.log(preview)
         return (
                 <div className="bg-white rounded-lg shadow-lg overflow-hidden mt-10">
                         <div className="p-6">
@@ -14,14 +22,16 @@ export default function Write() {
                                                 </button>
                                         </div>
                                         <h2 className="text-lg font-semibold text-gray-600 mb-4">Write About</h2>
-                                        <InputSection className="w-full p-4 h-40 text-sm text-black border-2 border-purple-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Tell me what to write for you. Hit Ctrl+Enter to generate." /></div>
-                                <WriteOptions />
+                                        <InputSection value={text}
+                                                onChange={handleChange} className="w-full p-4 h-40 text-sm text-black border-2 border-purple-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Tell me what to write for you. Hit Ctrl+Enter to generate." />
+                                </div>
+                                <WriteOptions setPreview={setPreview} text={text} />
+                                {preview && (<><h2 className="text-lg font-semibold text-gray-600 my-4">Write About</h2>
+                                        <InputSection value={preview}
+                                                className="w-full p-4 h-40 text-sm text-black border-2 border-purple-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="" /></>)}
+
                         </div>
-                        <div className="flex justify-center mb-4">
-                                <button className="p-3 w-9/12 rounded-full bg-violet-500 text-white transition">
-                                        Regenerate Crtl
-                                </button>
-                        </div>
-                </div>
+
+                </div >
         );
 }
