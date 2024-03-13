@@ -6,7 +6,10 @@
   "icons": {
     "48": "icon.png"
   },
-  "permissions": ["activeTab"],
+  "side_panel": {
+    "default_path": "index.html"
+  },
+  "permissions": ["activeTab", "sidePanel"],
   "action": {
     "default_popup": "index.html",
     "default_icon": "icon.png"
