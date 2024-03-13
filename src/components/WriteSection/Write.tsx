@@ -38,9 +38,7 @@ export default function Write() {
                                                 />
                                         </>
                                 )}
-
                         </div>
-
                 </div >
         );
 }
