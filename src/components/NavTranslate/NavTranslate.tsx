@@ -21,7 +21,7 @@ export default function NavTranslate(props: NavTranslate) {
                                         <ButtonSection handleClick={handleClick} TagName={e.TagName} active={activeLan} key={e.TagName} >{e.name}</ButtonSection>
                                 ))}
                         </div>
-                        <button className="flex items-center justify-center px-4 py-2  rounded-full text-black">
+                        <button className="flex items-center justify-center px-2 py-1 sm:px-4 sm:py-2  rounded-full text-black">
                                 <ChevronDownIcon className="h-5 w-5" />
                         </button>
                 </>
