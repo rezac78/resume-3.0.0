@@ -7,3 +7,23 @@ body {
   color: rgb(var(--foreground-rgb));
   background: #d1d5db;
 }
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+background: #F5F5DC;
+}
+
+::-webkit-scrollbar-thumb {
+background: #F5F5DC;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;  
+  scrollbar-width: none; 
+  scroll-behavior: auto;
+}

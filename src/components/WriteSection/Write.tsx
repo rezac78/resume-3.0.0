@@ -28,9 +28,16 @@ export default function Write() {
                                                 onChange={handleChange} className="w-full p-4 h-40 text-sm text-black border-2 border-purple-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Tell me what to write for you. Hit Ctrl+Enter to generate." />
                                 </div>
                                 <WriteOptions setIsLoading={setIsLoading} setPreview={setPreview} text={text} />
-                                {preview && (<><h2 className="text-lg font-semibold text-gray-600 my-4">Write About</h2>
-                                        <InputSection value={preview}
-                                                className="w-full p-4 h-40 text-sm text-black border-2 border-purple-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="" /></>)}
+                                {text.trim() && preview.trim() && (
+                                        <>
+                                                <h2 className="text-lg font-semibold text-gray-600 my-4">Preview</h2>
+                                                <InputSection
+                                                        value={preview}
+                                                        className="w-full p-4 h-40 text-sm text-black border-2 border-purple-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                                        placeholder=""
+                                                />
+                                        </>
+                                )}
 
                         </div>
 
